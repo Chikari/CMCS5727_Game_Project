@@ -130,8 +130,9 @@ public class InteractiveObject : MonoBehaviour {
             }
         }*/
         gameObjectRenderer = baseGameObject.GetComponent<MeshRenderer>();
-        gameObjectRenderer.sharedMaterial.color = calculatedColor;
-        gameObjectRenderer.sharedMaterial.SetColor("_EmissionColor", calculatedColor);
+		// Don't use shared Material, otherwise all objects using same material copy will have its color affected!
+        gameObjectRenderer.material.color = calculatedColor;
+        gameObjectRenderer.material.SetColor("_EmissionColor", calculatedColor);
     }
 
     //--------------Physics-related Functions----------------
